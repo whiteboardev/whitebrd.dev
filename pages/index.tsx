@@ -1,39 +1,43 @@
 import React from "react";
-import type { NextPage } from "next";
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+import AppHeader from "../components/AppHeader";
+import AppMain from "../components/AppMain";
+import { fetchGithubRepos } from '../data/remote'
+import {fetchGithubProfile} from "../data/remote/repos";
+import type {GithubProfile, GithubRepos} from "../domain/github";
 
-const Home: NextPage = () => {
+interface Props {
+  github: {
+    user: GithubProfile,
+    repos: GithubRepos
+  }
+}
+
+const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props: Props) => {
   return (
     <>
-      <header className="flex justify-content-between items-center">
-        <img alt="website logo" src="/some/source" />
-        <nav>
-          <ul className="m-0 list-none flex justify-start items-center">
-            <li>Instagram</li>
-            <li>Patreon</li>
-            <li>Youtube</li>
-            <li>Github</li>
-          </ul>
-        </nav>
-      </header>
-      <main>
-        <section id="about">
-          <p>Say something nice about me</p>
-          <article>
-            <p>Something nice about you</p>
-          </article>
-        </section>
-        <section id="projects">
-          <p>Something related to your projects</p>
-        </section>
-        <section id="feed">
-          <p>Display your feed</p>
-        </section>
-        <section id="contact">
-          <p>Ways of contact You</p>
-        </section>
-      </main>
+      <AppHeader />
+      <AppMain />
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const githubUser = await fetchGithubProfile()
+  const githubRepos = await fetchGithubRepos(githubUser.repos_url)
+  return {
+    props: {
+      user: githubUser,
+      repos: githubRepos
+    },
+  };
+  // return {
+  //   github: {
+  //     url: process.env.GITHUB_API_TOKEN,
+  //     username: process.env.GITHUB_USERNAME,
+  //     token: process.env.GITHUB_API_TOKEN,
+  //   },
+  // };
 };
 
 export default Home;
