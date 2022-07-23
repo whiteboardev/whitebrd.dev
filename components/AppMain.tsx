@@ -1,6 +1,11 @@
 import React from "react";
+import { GithubRepos } from "../domain/github";
 
-export const AppMain: React.FC = () => {
+interface Props {
+  repos: GithubRepos[];
+}
+
+export const AppMain: React.FC<Props> = (props: Props) => {
   return (
     <main className="p-4 flex flex-col justify-start space-y-4 h-full items-start">
       <section
@@ -16,7 +21,11 @@ export const AppMain: React.FC = () => {
         id="projects"
         className="p-4 bg-gray-200 rounded h-96 w-full flex flex-col justify-center items-center text-gray-600"
       >
-        <p>Something related to your projects</p>
+        <ul>
+          {props.repos.map((repo) => (
+            <li key={repo.id}>{repo.name}</li>
+          ))}
+        </ul>
       </section>
       <section
         id="feed"
