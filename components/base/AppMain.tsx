@@ -56,9 +56,9 @@ wait("Hello World", 2).then(value => console.log(value))
                     <p className="text-center text-md mb-4 md:text-left"><strong>Hello, bem-vindo ao meu site</strong>,
                         e antes de mais nada, se você quer aprender ou
                         se aprofundar em software você achou o lugar certo.</p>
-                    <p className="text-center text-md md:text-left">Pessoalmente sempre acreditei que conhecimento na
+                    <p className="text-center text-md md:text-left">Pessoalmente sempre acreditei que conhecimento
                         concentrado na cabeça de
-                        uma pessoa só não é algo bom, por isso aquilo que eu aprendo eu também ensino! Este é um espaço
+                        uma pessoa só não é algo bom, por isso aquilo que eu aprendo eu procuro compartilhar! Este é um espaço
                         para você que está começando para você que já sabe e você que não sabe! </p>
                 </article>
                 <article className=" hidden bg-gray-200 p-4 rounded w-1/2 min-h-full overflow-auto text-gray-600 md:block">
@@ -72,7 +72,7 @@ wait("Hello World", 2).then(value => console.log(value))
             <section id="projects" data-testid="projects"
                      className="p-4 bg-gray-200 rounded min-h-full w-full text-gray-600">
                 <div className="flex justify-start items-center space-x-2 mb-4">
-                    <FontAwesomeIcon icon={faGithub} size="xl"/>
+                    <FontAwesomeIcon icon={faGithub} size="lg"/>
                     <h3 id="projects-title" data-testid="projects-title" className="text-2xl font-semibold">
                         Whiteboard Repos
                     </h3>
