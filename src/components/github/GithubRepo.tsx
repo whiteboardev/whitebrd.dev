@@ -35,7 +35,7 @@ export default function GithubRepo(props: Props) {
 
   function getRepoDescription(): string {
     if (props.description) {
-      return _.trim(props.description, 30);
+      return _.trim(props.description, '30');
     }
     return "Sem descrição...";
   }

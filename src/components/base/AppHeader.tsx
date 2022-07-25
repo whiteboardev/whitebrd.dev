@@ -12,7 +12,7 @@ const AppHeader: React.FC = () => {
           <li>
             <a
               className="flex justify-start items-center space-x-2"
-              href="https://www.instagram.com/whiteboarddev/"
+              href="src/components/base/AppHeader"
               rel="noreferrer"
               target="_blank"
             >
